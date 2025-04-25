@@ -1,0 +1,226 @@
+/* Стили для страницы Оферты */
+
+.oferta {
+    padding: 80px 0;
+    color: #fff;
+}
+
+.oferta-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.oferta-inner h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.oferta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+    max-width: 1000px;
+}
+
+.oferta-text h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.oferta-text h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #f5f5f5;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.oferta-text h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.oferta-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.oferta-text ul {
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+.oferta-text li {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1200px) {
+    .oferta-inner h1 {
+        font-size: 32px;
+    }
+    
+    .oferta-text h2 {
+        font-size: 28px;
+    }
+    
+    .oferta-text h3 {
+        font-size: 22px;
+    }
+    
+    .oferta-text h4 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .oferta {
+        padding: 70px 0;
+    }
+    
+    .oferta-inner h1 {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+    
+    .oferta-text {
+        gap: 25px;
+    }
+    
+    .oferta-text h2 {
+        font-size: 26px;
+    }
+    
+    .oferta-text h3 {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .oferta-text h4 {
+        font-size: 19px;
+        margin-bottom: 12px;
+    }
+    
+    .oferta-text p,
+    .oferta-text li {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .oferta {
+        padding: 60px 0;
+    }
+    
+    .oferta-inner h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .oferta-text {
+        gap: 20px;
+    }
+    
+    .oferta-text h2 {
+        font-size: 24px;
+    }
+    
+    .oferta-text h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .oferta-text h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .oferta-text p,
+    .oferta-text li {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .oferta-text ul {
+        margin-left: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .oferta {
+        padding: 50px 0;
+    }
+    
+    .oferta-inner h1 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    .oferta-text {
+        gap: 15px;
+    }
+    
+    .oferta-text h2 {
+        font-size: 22px;
+    }
+    
+    .oferta-text h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .oferta-text h4 {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+    
+    .oferta-text p,
+    .oferta-text li {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .oferta-text ul {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .oferta-inner h1 {
+        font-size: 22px;
+    }
+    
+    .oferta-text h2 {
+        font-size: 20px;
+    }
+    
+    .oferta-text h3 {
+        font-size: 15px;
+    }
+    
+    .oferta-text h4 {
+        font-size: 16px;
+    }
+    
+    .oferta-text p,
+    .oferta-text li {
+        font-size: 13px;
+    }
+} 

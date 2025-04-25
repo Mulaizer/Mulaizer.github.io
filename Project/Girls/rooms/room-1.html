@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/Girls/room-1.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-menu">
+                    <div class="menu-left">
+                        <div class="social-wrapper">
+                            <a href="#" title="Whatsapp">
+                                <div class="whatsapp">
+                                    <img src="../../img/icons/whatsapp.png" alt="whatsapp" width="20px">
+                                </div>
+                            </a>
+                            <a href="https://t.me/Kinotimekrd" title="Telegram">
+                                <div class="telegram">
+                                    <img src="../../img/icons/telegram.png" alt="telegram" width="20px">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-nav-wrapper">
+                        <nav class="header-nav">
+                            <ul>
+                                <li><a href="../../index.html">Услуги</a></li>
+                                <li><a href="../../uslugi.html">Доп услуги</a></li>
+                                <li><a href="../../contacts.html">Контакты</a></li>
+                                <li><a href="../../oferta.html">Оферта</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="menu-right">
+                        <div class="menu-buttons-wrapper">
+                            <a href="https://t.me/Kinotimekrd" class="menu-button-call">Написать нам</a>
+                        </div>
+                    </div>
+                    
+                    <div class="burger-menu">
+                        <div class="burger-btn">
+                            <span></span>
+                        </div>
+                        
+                        <div class="burger-menu-content">
+                            <div class="mobile-menu-social">
+                                <a href="#" title="Whatsapp">
+                                    <div class="whatsapp">
+                                        <img src="../../img/icons/whatsapp.png" alt="whatsapp" width="20px">
+                                    </div>
+                                </a>
+                                <a href="https://t.me/Kinotimekrd" title="Telegram">
+                                    <div class="telegram">
+                                        <img src="../../img/icons/telegram.png" alt="telegram" width="20px">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mobile-menu-buttons">
+                                <a href="https://t.me/Kinotimekrd" class="menu-button-call">Написать нам</a>
+                            </div>
+                            <div class="mobile-menu-nav">
+                                <ul>
+                                    <li><a href="../../index.html">Услуги</a></li>
+                                    <li><a href="../../uslugi.html">Доп услуги</a></li>
+                                    <li><a href="../../contacts.html">Контакты</a></li>
+                                    <li><a href="../../oferta.html">Оферта</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <h1>ЗАЖИГАТЕЛЬНЫЙ ДЕВИЧНИК<br> (4 ЧАСА, ДО 16 ЧЕЛОВЕК)</h1>
+            </div>
+        </div>
+    </section>
+    <section class="room-1">
+        <div class="container">
+            <div class="room-1-inner">
+                <div class="room-images">
+                    <div class="main-image">
+                        <img src="../../img/company-rooms/room-1/IMG_1106_HDR.jpg" alt="room-1">
+                    </div>
+                    <div class="thumbnails">
+                        <img src="../../img/company-rooms/room-1/IMG_1106_HDR.jpg" onclick="changeImage(this)">
+                        <img src="../../img/company-rooms/room-2/IMG_1160_HDR.jpg" onclick="changeImage(this)">
+                        <img src="../../img/company-rooms/room-3/IMG_4465.jpeg" onclick="changeImage(this)">
+                        <img src="../../img/rooms/room-1/IMG_1079_HDR.jpg" onclick="changeImage(this)">
+                    </div>
+                </div>
+                <div class="room-text">
+                    <h2>ЗАЖИГАТЕЛЬНЫЙ ДЕВИЧНИК (4 ЧАСА,
+                        ДО 16 ЧЕЛОВЕК)</h2>
+                    <span>35000 ₽</span>
+                    <a href="#" class="room-button" 
+                       data-booking="true"
+                       data-booking-type="fixed-with-hall"
+                       data-booking-name="ЗАЖИГАТЕЛЬНЫЙ ДЕВИЧНИК (4 ЧАСА, ДО 16 ЧЕЛОВЕК)"
+                       data-weekday-price="35000"
+                       data-weekend-price="35000"
+                       data-min-hours="4"
+                       data-hall-options='{"Киберпанк": 0, "Романтик": 0, "Ретро": 0, "Космос": 0}'>оформить заказ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="room-description">
+        <div class="container">
+            <div class="room-text-inner">
+                <div class="room-text-inner-title">
+                    <span>Время аренды - весь день.</span>
+                    <span>Рассчитано на компанию до 16 человек.</span>
+                </div>
+                <div class="room-text-inner-content">
+                    <span>Что включает:</span>
+                    <div class="list-items">
+                        <li>Просмотр музыкальных клипов и фильмов</li>
+                        <li>Танцы</li>
+                        <li>Объёмный звук</li>
+                        <li>Популярные настольные игры</li>
+                    </div>
+                </div>
+                <div class="room-text-inner-content">
+                    <span>А также:</span>
+                    <div class="list-items">
+                        <li>Встреча в костюме мишки</li>
+                        <li id="none"></li>
+                        <li>Тематические капкейки, индивидуальный дизайн (12 шт.)</li>
+                        <li>Три большие пиццы</li>
+                        <li>Набор роллов</li>
+                        <li>Виноградный напиток (3)</li>
+                        <li>Коктейли</li>
+                        <li>Лимонад 3 л. (Фанта,спрайт,кола)</li>
+                        <li>Тематическое воздушное оформление зала</li>
+                        <li>Памятное фото на Polaroid</li>
+                    </div>
+                </div>
+                <div class="room-text-inner-content">
+                    <span>Вы можете взять с собой еду и напитки, ничего не доплачивая (посуду и бокалы предоставляем).</span>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="halls">
+        <div class="container">
+            <div class="halls-inner">
+                <div class="halls-text">
+                    <h2>4 ТЕМАТИЧЕСКИХ ЗАЛА НА ВЫБОР</h2>
+                    <span>Выбирай один из 4 неповторимых и атмосферных залов</span>
+                </div>
+                <div class="halls-wrapper">
+                    <div class="halls-card">
+                        <img src="../../img/title-rooms/IMG_1106_HDR.jpg" alt="room">
+                        <div class="halls-card-text">
+                            <span class="hall-title">Киберпанк</span>
+                            <span class="hall-address">Восточно-Кругликовская 42/3 к2</span>
+                        </div>
+                    </div>
+                    <div class="halls-card">
+                        <img src="../../img/rooms/room-1/IMG_1079_HDR.jpg" alt="room">
+                        <div class="halls-card-text">
+                            <span class="hall-title">Романтик</span>
+                            <span class="hall-address">Восточно-Кругликовская 42/3 к2</span>
+                        </div>
+                    </div>
+                    <div class="halls-card">
+                        <img src="../../img/title-rooms/IMG_4465.jpeg" alt="room">
+                        <div class="halls-card-text">
+                            <span class="hall-title">Ретро</span>
+                            <span class="hall-address">Восточно-Кругликовская 42/3 к2</span>
+                        </div>
+                    </div>
+                    <div class="halls-card">
+                        <img src="../../img/title-rooms/IMG_1178_HDR.jpg" alt="room">
+                        <div class="halls-card-text">
+                            <span class="hall-title">Космос</span>
+                            <span class="hall-address">Восточно-Кругликовская 42/3 к2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/modal.js"></script>
+    <script src="../../js/yoomoney.js"></script>
+    <script src="../../js/main.js"></script>
+    <!-- Фикс для проблем с формой бронирования -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                // Проверяем наличие модального окна
+                if (!window.bookingModal) {
+                    console.error('Модальное окно не найдено!');
+                    return;
+                }
+                
+                console.log('Применяем исправление для формы бронирования');
+                
+                // Сохраняем оригинальный метод отправки формы
+                const originalSubmitHandler = window.bookingModal.form ? window.bookingModal.form.onsubmit : null;
+                
+                // Переопределяем обработчик отправки формы
+                window.bookingModal.form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    console.log('Перехвачена отправка формы');
+                    
+                    // Получаем ссылки на поля
+                    const nameInput = document.getElementById('customer-name');
+                    const phoneInput = document.getElementById('customer-phone');
+                    const dateInput = document.getElementById('booking-date');
+                    
+                    // Проверка имени
+                    if (!nameInput || !nameInput.value.trim()) {
+                        alert('Пожалуйста, введите ваше имя');
+                        if (nameInput) nameInput.focus();
+                        return false;
+                    }
+                    
+                    // Проверка телефона
+                    if (!phoneInput || !phoneInput.value.trim()) {
+                        alert('Пожалуйста, введите номер телефона');
+                        if (phoneInput) phoneInput.focus();
+                        return false;
+                    }
+                    
+                    // Проверка даты
+                    if (!dateInput || !dateInput.value) {
+                        // Если дата не выбрана, устанавливаем текущую
+                        if (dateInput) {
+                            const today = new Date();
+                            const yyyy = today.getFullYear();
+                            const mm = String(today.getMonth() + 1).padStart(2, '0');
+                            const dd = String(today.getDate()).padStart(2, '0');
+                            dateInput.value = `${yyyy}-${mm}-${dd}`;
+                        }
+                    }
+                    
+                    // Собираем данные заказа
+                    const formData = {
+                        serviceName: window.bookingModal.serviceNameInput ? window.bookingModal.serviceNameInput.value : 'Услуга',
+                        date: dateInput ? dateInput.value : new Date().toISOString().split('T')[0],
+                        hours: window.bookingModal.hoursInput ? window.bookingModal.hoursInput.value : '2',
+                        hallName: (window.bookingModal.hallSelect && window.bookingModal.hallSelect.value) 
+                            ? window.bookingModal.hallSelect.value 
+                            : 'Не выбран',
+                        customerName: nameInput ? nameInput.value : 'Гость',
+                        customerPhone: phoneInput ? phoneInput.value : '',
+                        totalPrice: window.bookingModal.totalPrice || 0
+                    };
+                    
+                    console.log('Данные заказа:', formData);
+                    
+                    // Спрашиваем у пользователя, хочет ли он перейти к оплате
+                    if (confirm('Перейти к оплате?')) {
+                        // Вызываем функцию перенаправления на оплату
+                        if (typeof redirectToYooMoney === 'function') {
+                            redirectToYooMoney(formData);
+                        } else {
+                            alert('Ошибка: функция оплаты недоступна');
+                        }
+                    } else {
+                        // Если пользователь отменил оплату, закрываем модальное окно
+                        window.bookingModal.close();
+                    }
+                    
+                    return false;
+                });
+                
+                // Улучшение обработки открытия модального окна
+                const originalOpen = window.bookingModal.open;
+                window.bookingModal.open = function(config) {
+                    // Вызываем оригинальный метод
+                    originalOpen.call(this, config);
+                    
+                    // Принудительно устанавливаем текущую дату
+                    const dateInput = document.getElementById('booking-date');
+                    if (dateInput) {
+                        const today = new Date();
+                        const yyyy = today.getFullYear();
+                        const mm = String(today.getMonth() + 1).padStart(2, '0');
+                        const dd = String(today.getDate()).padStart(2, '0');
+                        dateInput.value = `${yyyy}-${mm}-${dd}`;
+                    }
+                    
+                    // Очищаем поля имени и телефона
+                    const nameInput = document.getElementById('customer-name');
+                    const phoneInput = document.getElementById('customer-phone');
+                    if (nameInput) nameInput.value = '';
+                    if (phoneInput) phoneInput.value = '';
+                };
+                
+                console.log('Исправление применено успешно');
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
