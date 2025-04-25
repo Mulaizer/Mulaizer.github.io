@@ -1,0 +1,345 @@
+/**
+ * Интеграция с платежной системой FreeKassa
+ * Версия: 1.0
+ */
+
+/**
+ * Интеграция с FreeKassa для модальных окон бронирования
+ */
+
+// Идентификатор магазина
+const SHOP_ID = '61463'; // ID вашего магазина в FreeKassa
+
+// Секретные ключи для формирования подписи
+const SECRET_KEY_1 = 'BX-@=J44ZJC$W}w';
+const SECRET_KEY_2 = '*i(}[Ly1}yU+GVu';
+
+/**
+ * Функция перенаправления на оплату через FreeKassa
+ * @param {Object} formData - данные заказа
+ */
+function redirectToFreekassa(formData) {
+    console.log('FreeKassa: начало процесса оплаты', formData);
+    
+    try {
+        // Проверка данных заказа
+        if (!formData || typeof formData !== 'object') {
+            throw new Error('Некорректные данные заказа');
+        }
+        
+        if (!formData.totalPrice || isNaN(formData.totalPrice) || formData.totalPrice <= 0) {
+            throw new Error('Некорректная сумма платежа: ' + formData.totalPrice);
+        }
+        
+        // Генерируем уникальный ID заказа (текущий timestamp)
+        const orderId = Date.now();
+        
+        // Сохраняем данные заказа в localStorage
+        saveOrderData(orderId, formData);
+        
+        // Форматируем сумму как строку с двумя десятичными знаками (с точкой)
+        const amount = parseFloat(formData.totalPrice).toFixed(2);
+        
+        // Формируем подпись для защиты данных в формате m:oa:SECRET_KEY_1:o
+        const signString = `${SHOP_ID}:${amount}:${SECRET_KEY_1}:${orderId}`;
+        const sign = md5(signString);
+        
+        // Выводим для отладки
+        console.log('FreeKassa: Компоненты подписи:');
+        console.log('SHOP_ID:', SHOP_ID);
+        console.log('Сумма (amount):', amount);
+        console.log('SECRET_KEY_1:', SECRET_KEY_1);
+        console.log('orderId:', orderId);
+        console.log('Строка для подписи:', signString);
+        console.log('MD5 подпись:', sign);
+        
+        // Формируем URL для перенаправления в точном формате
+        const url = `https://pay.freekassa.ru/?m=${SHOP_ID}&oa=${amount}&o=${orderId}&s=${sign}`;
+        
+        // Добавляем дополнительные параметры
+        let fullUrl = url;
+        
+        // Валюта и язык
+        fullUrl += '&i=rub&lang=ru';
+        
+        // Добавляем пользовательские параметры, если они есть
+        if (formData.customerName) fullUrl += `&us_name=${encodeURIComponent(formData.customerName)}`;
+        if (formData.customerPhone) fullUrl += `&us_phone=${encodeURIComponent(formData.customerPhone)}`;
+        if (formData.serviceName) fullUrl += `&us_service=${encodeURIComponent(formData.serviceName)}`;
+        if (formData.date) fullUrl += `&us_date=${encodeURIComponent(formData.date)}`;
+        if (formData.hours) fullUrl += `&us_hours=${encodeURIComponent(formData.hours)}`;
+        if (formData.hallName) fullUrl += `&us_hall=${encodeURIComponent(formData.hallName)}`;
+        
+        // URL для возврата - используем фиксированный домен
+        const baseUrl = 'https://kinotime-together.ru';
+        fullUrl += `&SUCCESS_URL=${encodeURIComponent(baseUrl + '/success.html')}`;
+        fullUrl += `&FAIL_URL=${encodeURIComponent(baseUrl + '/fail.html')}`;
+        
+        console.log('FreeKassa: перенаправление на страницу оплаты...', fullUrl);
+        window.location.href = fullUrl;
+        
+    } catch (error) {
+        console.error('FreeKassa: ошибка перенаправления на оплату', error);
+        alert('Ошибка при переходе к оплате: ' + error.message);
+    }
+}
+
+/**
+ * Сохраняет данные заказа в localStorage
+ */
+function saveOrderData(orderId, formData) {
+    const orderData = {
+        orderId: orderId,
+        amount: formData.totalPrice,
+        serviceName: formData.serviceName || 'Услуга',
+        date: formData.date || new Date().toISOString().split('T')[0],
+        hours: formData.hours || '2',
+        hallName: formData.hallName || 'Не указан',
+        customerName: formData.customerName || 'Гость',
+        customerPhone: formData.customerPhone || '',
+        timestamp: new Date().toISOString()
+    };
+    
+    // Сохраняем данные в localStorage
+    localStorage.setItem('lastOrder', JSON.stringify(orderData));
+    
+    // Сохраняем также в истории заказов
+    const ordersHistory = JSON.parse(localStorage.getItem('ordersHistory') || '[]');
+    ordersHistory.push(orderData);
+    localStorage.setItem('ordersHistory', JSON.stringify(ordersHistory));
+    
+    console.log('FreeKassa: данные заказа сохранены', orderData);
+}
+
+/**
+ * Создает форму для отправки данных на FreeKassa
+ */
+function createPaymentForm(orderId, formData, sign) {
+    // Создаем HTML форму
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://pay.freekassa.ru/';
+    form.style.display = 'none';
+    
+    // Добавляем обязательные параметры
+    addFormField(form, 'm', SHOP_ID); // ID магазина
+    addFormField(form, 'oa', formData.totalPrice); // Сумма платежа
+    addFormField(form, 'o', orderId); // Номер заказа
+    addFormField(form, 's', sign); // Подпись
+    
+    // Добавляем пользовательские параметры
+    addFormField(form, 'us_name', formData.customerName || 'Гость');
+    addFormField(form, 'us_phone', formData.customerPhone || '');
+    addFormField(form, 'us_service', formData.serviceName || 'Услуга');
+    addFormField(form, 'us_date', formData.date || '');
+    addFormField(form, 'us_hours', formData.hours || '');
+    addFormField(form, 'us_hall', formData.hallName || 'Не указан');
+    
+    // Указываем валюту (рубли)
+    addFormField(form, 'i', 'rub');
+    
+    // Указываем язык интерфейса (русский)
+    addFormField(form, 'lang', 'ru');
+    
+    // Указываем URL для возврата после успешной или неуспешной оплаты
+    const baseUrl = window.location.origin;
+    addFormField(form, 'SUCCESS_URL', `${baseUrl}/success.html`);
+    addFormField(form, 'FAIL_URL', `${baseUrl}/fail.html`);
+    
+    return form;
+}
+
+/**
+ * Добавляет поле в форму
+ */
+function addFormField(form, name, value) {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+}
+
+/**
+ * Функция MD5-хеширования (для создания подписи)
+ */
+function md5(input) {
+    // Функция для сложения 32-битных целых чисел
+    function add32(a, b) {
+        return (a + b) & 0xFFFFFFFF;
+    }
+
+    // Вспомогательные функции
+    function cmn(q, a, b, x, s, t) {
+        a = add32(add32(a, q), add32(x, t));
+        return add32((a << s) | (a >>> (32 - s)), b);
+    }
+
+    function ff(a, b, c, d, x, s, t) {
+        return cmn((b & c) | ((~b) & d), a, b, x, s, t);
+    }
+
+    function gg(a, b, c, d, x, s, t) {
+        return cmn((b & d) | (c & (~d)), a, b, x, s, t);
+    }
+
+    function hh(a, b, c, d, x, s, t) {
+        return cmn(b ^ c ^ d, a, b, x, s, t);
+    }
+
+    function ii(a, b, c, d, x, s, t) {
+        return cmn(c ^ (b | (~d)), a, b, x, s, t);
+    }
+
+    // Основная функция MD5
+    function md5cycle(x, k) {
+        let a = x[0], b = x[1], c = x[2], d = x[3];
+
+        a = ff(a, b, c, d, k[0], 7, -680876936);
+        d = ff(d, a, b, c, k[1], 12, -389564586);
+        c = ff(c, d, a, b, k[2], 17, 606105819);
+        b = ff(b, c, d, a, k[3], 22, -1044525330);
+        a = ff(a, b, c, d, k[4], 7, -176418897);
+        d = ff(d, a, b, c, k[5], 12, 1200080426);
+        c = ff(c, d, a, b, k[6], 17, -1473231341);
+        b = ff(b, c, d, a, k[7], 22, -45705983);
+        a = ff(a, b, c, d, k[8], 7, 1770035416);
+        d = ff(d, a, b, c, k[9], 12, -1958414417);
+        c = ff(c, d, a, b, k[10], 17, -42063);
+        b = ff(b, c, d, a, k[11], 22, -1990404162);
+        a = ff(a, b, c, d, k[12], 7, 1804603682);
+        d = ff(d, a, b, c, k[13], 12, -40341101);
+        c = ff(c, d, a, b, k[14], 17, -1502002290);
+        b = ff(b, c, d, a, k[15], 22, 1236535329);
+
+        a = gg(a, b, c, d, k[1], 5, -165796510);
+        d = gg(d, a, b, c, k[6], 9, -1069501632);
+        c = gg(c, d, a, b, k[11], 14, 643717713);
+        b = gg(b, c, d, a, k[0], 20, -373897302);
+        a = gg(a, b, c, d, k[5], 5, -701558691);
+        d = gg(d, a, b, c, k[10], 9, 38016083);
+        c = gg(c, d, a, b, k[15], 14, -660478335);
+        b = gg(b, c, d, a, k[4], 20, -405537848);
+        a = gg(a, b, c, d, k[9], 5, 568446438);
+        d = gg(d, a, b, c, k[14], 9, -1019803690);
+        c = gg(c, d, a, b, k[3], 14, -187363961);
+        b = gg(b, c, d, a, k[8], 20, 1163531501);
+        a = gg(a, b, c, d, k[13], 5, -1444681467);
+        d = gg(d, a, b, c, k[2], 9, -51403784);
+        c = gg(c, d, a, b, k[7], 14, 1735328473);
+        b = gg(b, c, d, a, k[12], 20, -1926607734);
+
+        a = hh(a, b, c, d, k[5], 4, -378558);
+        d = hh(d, a, b, c, k[8], 11, -2022574463);
+        c = hh(c, d, a, b, k[11], 16, 1839030562);
+        b = hh(b, c, d, a, k[14], 23, -35309556);
+        a = hh(a, b, c, d, k[1], 4, -1530992060);
+        d = hh(d, a, b, c, k[4], 11, 1272893353);
+        c = hh(c, d, a, b, k[7], 16, -155497632);
+        b = hh(b, c, d, a, k[10], 23, -1094730640);
+        a = hh(a, b, c, d, k[13], 4, 681279174);
+        d = hh(d, a, b, c, k[0], 11, -358537222);
+        c = hh(c, d, a, b, k[3], 16, -722521979);
+        b = hh(b, c, d, a, k[6], 23, 76029189);
+        a = hh(a, b, c, d, k[9], 4, -640364487);
+        d = hh(d, a, b, c, k[12], 11, -421815835);
+        c = hh(c, d, a, b, k[15], 16, 530742520);
+        b = hh(b, c, d, a, k[2], 23, -995338651);
+
+        a = ii(a, b, c, d, k[0], 6, -198630844);
+        d = ii(d, a, b, c, k[7], 10, 1126891415);
+        c = ii(c, d, a, b, k[14], 15, -1416354905);
+        b = ii(b, c, d, a, k[5], 21, -57434055);
+        a = ii(a, b, c, d, k[12], 6, 1700485571);
+        d = ii(d, a, b, c, k[3], 10, -1894986606);
+        c = ii(c, d, a, b, k[10], 15, -1051523);
+        b = ii(b, c, d, a, k[1], 21, -2054922799);
+        a = ii(a, b, c, d, k[8], 6, 1873313359);
+        d = ii(d, a, b, c, k[15], 10, -30611744);
+        c = ii(c, d, a, b, k[6], 15, -1560198380);
+        b = ii(b, c, d, a, k[13], 21, 1309151649);
+        a = ii(a, b, c, d, k[4], 6, -145523070);
+        d = ii(d, a, b, c, k[11], 10, -1120210379);
+        c = ii(c, d, a, b, k[2], 15, 718787259);
+        b = ii(b, c, d, a, k[9], 21, -343485551);
+
+        x[0] = add32(a, x[0]);
+        x[1] = add32(b, x[1]);
+        x[2] = add32(c, x[2]);
+        x[3] = add32(d, x[3]);
+    }
+
+    // Конвертирует строку в массив слов
+    function md5blk(s) {
+        const md5blks = [];
+        for (let i = 0; i < 64; i += 4) {
+            md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
+        }
+        return md5blks;
+    }
+
+    // Конвертирует массив байтов в массив слов
+    function md5blk_array(a) {
+        const md5blks = [];
+        for (let i = 0; i < 64; i += 4) {
+            md5blks[i >> 2] = a[i] + (a[i + 1] << 8) + (a[i + 2] << 16) + (a[i + 3] << 24);
+        }
+        return md5blks;
+    }
+
+    // Основная функция для генерации MD5 из строки
+    function md51(s) {
+        const n = s.length;
+        const state = [1732584193, -271733879, -1732584194, 271733878];
+        let i;
+        for (i = 64; i <= s.length; i += 64) {
+            md5cycle(state, md5blk(s.substring(i - 64, i)));
+        }
+        
+        s = s.substring(i - 64);
+        const tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (i = 0; i < s.length; i++) {
+            tail[i >> 2] |= s.charCodeAt(i) << ((i % 4) << 3);
+        }
+        tail[i >> 2] |= 0x80 << ((i % 4) << 3);
+        if (i > 55) {
+            md5cycle(state, tail);
+            for (i = 0; i < 16; i++) tail[i] = 0;
+        }
+        tail[14] = n * 8;
+        md5cycle(state, tail);
+        return state;
+    }
+
+    // Конвертирует массив из 4 байтов в строку hex
+    function rhex(n) {
+        const hex_chr = '0123456789abcdef';
+        let s = '';
+        for (let j = 0; j < 4; j++) {
+            s += hex_chr.charAt((n >> (j * 8 + 4)) & 0x0F) + hex_chr.charAt((n >> (j * 8)) & 0x0F);
+        }
+        return s;
+    }
+
+    // Конвертирует массив в строку hex
+    function hex(x) {
+        for (let i = 0; i < x.length; i++) {
+            x[i] = rhex(x[i]);
+        }
+        return x.join('');
+    }
+
+    // Проверяем тип входных данных
+    if (typeof input !== 'string') input = '' + input;
+    
+    // Вычисляем MD5 хеш
+    const result = hex(md51(input));
+    return result;
+}
+
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('FreeKassa: Скрипт инициализирован');
+}); 
+
+console.log('FreeKassa: Скрипт загружен и готов к использованию');
