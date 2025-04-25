@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Успешная оплата | Киноtime - Аренда кинозала в Краснодаре</title>
+    <meta name="description" content="Ваш заказ в кинотеатре Киноtime успешно оплачен. Информация о заказе и следующие шаги для завершения бронирования кинозала.">
+    <meta name="keywords" content="успешная оплата, подтверждение заказа, Киноtime, кинозал, бронирование, Краснодар">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kinotime-together.ru/success.html">
+    <meta property="og:title" content="Успешная оплата | Киноtime">
+    <meta property="og:description" content="Ваш заказ в кинотеатре Киноtime успешно оплачен. Теперь нужно связаться с нами для завершения бронирования.">
+    <meta property="og:image" content="https://kinotime-together.ru/img/services/together.jpeg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Киноtime">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        .success {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 50px 20px;
+            background-color: #000;
+            color: white;
+            text-align: center;
+        }
+        
+        .success-content {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: var(--primary-color);
+        }
+        
+        .success-title {
+            font-size: 40px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .success-message {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        
+        .order-details {
+            background-color: rgba(134, 35, 211, 0.1);
+            border: 1px solid rgba(134, 35, 211, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .order-details h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .order-field {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .order-label {
+            font-weight: 600;
+            color: #aaa;
+        }
+        
+        .telegram-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .telegram-link:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-3px);
+        }
+        
+        .telegram-icon {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .next-steps {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            width: 100%;
+        }
+        
+        .next-steps h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .next-steps ol {
+            text-align: left;
+            padding-left: 30px;
+        }
+        
+        .next-steps li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        .button-home {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .button-home:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .success-title {
+                font-size: 32px;
+            }
+            
+            .success-message {
+                font-size: 18px;
+            }
+            
+            .order-details {
+                padding: 20px;
+            }
+            
+            .order-field {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+            
+            .order-label {
+                margin-bottom: 5px;
+            }
+            
+            .next-steps li {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .success-title {
+                font-size: 28px;
+            }
+            
+            .success-message {
+                font-size: 16px;
+            }
+            
+            .telegram-link {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success">
+        <div class="success-content">
+            <div class="success-icon">✅</div>
+            <h1 class="success-title">Оплата успешно выполнена!</h1>
+            <p class="success-message">Благодарим за оплату! Ваш заказ принят в обработку. Для подтверждения бронирования, пожалуйста, свяжитесь с нами в Telegram.</p>
+            
+            <div class="order-details" id="orderDetails">
+                <h3>Детали вашего заказа:</h3>
+                <!-- Данные будут заполнены скриптом -->
+            </div>
+            
+            <div class="next-steps">
+                <h3>Следующие шаги:</h3>
+                <ol>
+                    <li>Нажмите на кнопку "Написать в Telegram" ниже</li>
+                    <li>Отправьте сообщение со следующим текстом: "Оплата ID: <span id="orderIdSpan">--</span>"</li>
+                    <li>Наш менеджер проверит оплату и подтвердит ваше бронирование</li>
+                    <li>Вы получите всю необходимую информацию для посещения кинозала</li>
+                </ol>
+            </div>
+            
+            <a href="https://t.me/Kinotimekrd" class="telegram-link">
+                <img src="img/icons/telegram.png" alt="Telegram" class="telegram-icon">
+                Написать в Telegram
+            </a>
+            
+            <a href="index.html" class="button-home">Вернуться на главную</a>
+        </div>
+    </div>
+    
+    <script src="js/yoomoney.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем параметры из URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderLabel = urlParams.get('label'); // ID заказа
+            
+            // Пытаемся найти заказ в истории
+            const ordersHistory = JSON.parse(localStorage.getItem('ordersHistory') || '[]');
+            const orderData = ordersHistory.find(order => order.orderId == orderLabel) || 
+                              JSON.parse(localStorage.getItem('lastOrder') || '{}');
+            
+            // Устанавливаем ID заказа в сообщение для Telegram
+            const orderIdSpan = document.getElementById('orderIdSpan');
+            if (orderIdSpan) {
+                orderIdSpan.textContent = orderLabel || orderData.orderId || 'Не найден';
+            }
+            
+            // Заполняем детали заказа
+            const orderDetailsDiv = document.getElementById('orderDetails');
+            if (orderDetailsDiv && orderData) {
+                // Создаем элементы с деталями заказа
+                const fields = [
+                    { label: 'Услуга', value: orderData.serviceName || 'Не указано' },
+                    { label: 'Дата', value: orderData.date || 'Не указано' },
+                    { label: 'Время', value: orderData.hours ? `${orderData.hours} ч.` : 'Не указано' },
+                    { label: 'Зал', value: orderData.hallName || 'Не указано' },
+                    { label: 'Сумма', value: `${orderData.amount || 0} руб.` },
+                    { label: 'ID заказа', value: orderLabel || orderData.orderId || 'Не найден' }
+                ];
+                
+                // Добавляем заголовок (он уже есть в HTML)
+                let html = '<h3>Детали вашего заказа:</h3>';
+                
+                // Добавляем поля
+                fields.forEach(field => {
+                    html += `
+                    <div class="order-field">
+                        <div class="order-label">${field.label}:</div>
+                        <div class="order-value">${field.value}</div>
+                    </div>`;
+                });
+                
+                orderDetailsDiv.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html> 

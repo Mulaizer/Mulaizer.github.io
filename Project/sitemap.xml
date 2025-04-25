@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Главные страницы -->
+  <url>
+    <loc>https://kinotime-together.ru/</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/index.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/contacts.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/uslugi.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/oferta.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Страницы категорий услуг -->
+  <url>
+    <loc>https://kinotime-together.ru/Company/Company.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/Girls/girls.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/For%20two/two.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/Kids/Kids.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Страницы комнат для компаний -->
+  <url>
+    <loc>https://kinotime-together.ru/Company/rooms/room-1.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/Company/rooms/room-2.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/Company/rooms/room-3.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Страницы комнат для девичников -->
+  <url>
+    <loc>https://kinotime-together.ru/Girls/rooms/room-1.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/Girls/rooms/room-2.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/Girls/rooms/room-3.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Страницы комнат для двоих -->
+  <url>
+    <loc>https://kinotime-together.ru/For%20two/rooms/room-1/room-1.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kinotime-together.ru/For%20two/rooms/room-2/room-2.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Страницы комнат для детей -->
+  <url>
+    <loc>https://kinotime-together.ru/Kids/rooms/room-1.html</loc>
+    <lastmod>2023-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset> 

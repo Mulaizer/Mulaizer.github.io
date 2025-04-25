@@ -1,0 +1,19 @@
+User-Agent: *
+Allow: /
+Allow: /index.html
+Allow: /contacts.html
+Allow: /uslugi.html
+Allow: /oferta.html
+Allow: /Company/
+Allow: /Girls/
+Allow: /Kids/
+Allow: /For two/
+Disallow: /success.html
+Disallow: /fail.html
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+
+Sitemap: https://kinotime-together.ru/sitemap.xml
+
+Host: kinotime-together.ru 
